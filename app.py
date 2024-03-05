@@ -40,6 +40,8 @@ df = pd.read_csv(uploaded_file)
 
 with st.expander("🔎 Dataframe Preview"):
     st.write(df.tail(5))
+
+@st.experimental_memo
 if st.button('Generate'):
         query1 = "Plot the opening balance for the march of 2022"
         query2 = "Opening balance being more than 80 is a warining give an alert message for those dates plz write this in the form of a micro blog for march 2022 "
