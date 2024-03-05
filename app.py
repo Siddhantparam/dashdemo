@@ -35,27 +35,24 @@ class StreamlitResponse(ResponseParser):
         return
 
 
-st.write("# Chat with Credit Card Fraud Dataset 🦙")
+st.write("# PARAM GENAI Alerts 🦙")
 uploaded_file = st.file_uploader('Upload your csv for analytics')
 
-if uploaded_file is not None:
-    df = pd.read_csv('customer_data.csv')
+df = pd.read_csv(uploaded_file)
 
-    with st.expander("🔎 Dataframe Preview"):
-        st.write(df.tail(5))
+with st.expander("🔎 Dataframe Preview"):
+    st.write(df.tail(5))
 
 query1 = "Plot the opening balance for the march of 2022"
-query2 = "summarize about average , total , mode , least and max opening price for january 2022"
+query2 = "Opening balance being more than 80 is a warining give an alert message for those dates plz write this in the form of a micro blog for march 2022 "
 query3 = "Plot the closing balance for the march of 2022"
-query4 = "summarize about average , total , mode , least and max closing price for january 2022"
+query4 = "Closing balance being lower than 20 is a warining give an alert message for those dates plz write this in the form of a micro blog for marc h 2022"
 query5 = "Plot the recieved quantity for the march of 2022"
-query6="summarize about average , total , mode , least and max recieving quantity for january 2022"
-query7="Plot the consumption quantity for the march of 2022"
-query8="summarize about average , total , mode , least and max consumption quantity for january 2022"
+query6 = "recieved below 5 is problem plz give an alert for those days of march 2022"
 container = st.container()
 
 if query1:
-    llm = OpenAI(api_token=os.environ["OPENAI_API_KEY"])
+    llm = OpenAI(api_token='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')
     query_engine = SmartDataframe(
         df,
         config={
@@ -63,14 +60,12 @@ if query1:
             "response_parser": StreamlitResponse,
         },
     )
-    st.header('Analytics for Q1 2022')
+    st.header('Alerts for march 2022')
     answer1 = query_engine.chat(query1)
     answer2=query_engine.chat(query2)
     answer3=query_engine.chat(query3)
     answer4=query_engine.chat(query4)
     answer5=query_engine.chat(query5)
     answer6=query_engine.chat(query6)
-    answer7=query_engine.chat(query7)
-    answer8=query_engine.chat(query8)
 
 
