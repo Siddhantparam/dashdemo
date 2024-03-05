@@ -42,16 +42,15 @@ with st.expander("🔎 Dataframe Preview"):
     st.write(df.tail(5))
 
 @st.experimental_memo
-if st.button('Generate'):
-        query1 = "Plot the opening balance for the march of 2022"
-        query2 = "Opening balance being more than 80 is a warining give an alert message for those dates plz write this in the form of a micro blog for march 2022 "
-        query3 = "Plot the closing balance for the march of 2022"
-        query4 = "Closing balance being lower than 20 is a warining give an alert message for those dates plz write this in the form of a micro blog for marc h 2022"
-        query5 = "Plot the recieved quantity for the march of 2022"
-        query6 = "recieved below 5 is problem plz give an alert for those days of march 2022"
-        container = st.container()
-        
-        if query1:
+query1 = "Plot the opening balance for the march of 2022"
+query2 = "Opening balance being more than 80 is a warining give an alert message for those dates plz write this in the form of a micro blog for march 2022 "
+query3 = "Plot the closing balance for the march of 2022"
+query4 = "Closing balance being lower than 20 is a warining give an alert message for those dates plz write this in the form of a micro blog for marc h 2022"
+query5 = "Plot the recieved quantity for the march of 2022"
+query6 = "recieved below 5 is problem plz give an alert for those days of march 2022"
+
+@st.experimental_memo
+if query1:
             llm = OpenAI(api_token='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')
             query_engine = SmartDataframe(
                 df,
