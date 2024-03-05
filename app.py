@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 import streamlit as st
 import pandas as pd
 from pandasai import SmartDataframe
@@ -7,7 +6,6 @@ from pandasai.callbacks import BaseCallback
 from pandasai.llm import OpenAI
 from pandasai.responses.response_parser import ResponseParser
 
-load_dotenv()
 
 class StreamlitCallback(BaseCallback):
     def __init__(self, container) -> None:
