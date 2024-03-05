@@ -48,7 +48,7 @@ if query1:
                 },
             )
     st.header('Alerts for march 2022')
-    answer1 = query_engine.chat(query1)
+    st.write(query_engine.chat(query1))
     answer2=query_engine.chat(query2)
     answer3=query_engine.chat(query3)
     answer4=query_engine.chat(query4)
